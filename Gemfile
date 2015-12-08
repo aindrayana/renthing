@@ -21,15 +21,18 @@ gem 'bcrypt', '~> 3.1.7'
   # library for generating fake data (github.com/stympy/faker)
   gem 'faker'
 
-  # Sass-powered version of Bootstrap 3 (github.com/twbs/bootstrap-sass)
-  # gem 'bootstrap-sass'
-
   # Sass-powered version of MaterializeCSS (github.com/mkhairi/materialize-sass)
-  gem 'materialize-sass'
+  # gem 'materialize-sass'
+
+  # Sass-powered version of Bootstrap 3 (github.com/twbs/bootstrap-sass)
+  gem 'bootstrap-sass'
+
   # an authorization library (github.com/CanCanCommunity/cancancan)
   gem 'cancancan', '~> 1.10'
   # Font-Awesome web fonts and stylesheets (github.com/bokmann/font-awesome-rails)
   gem 'font-awesome-rails'
+  # A simple-line-icons icon font library (github.com/minnowlab/simple-line-icons-rails)
+  gem 'simple-line-icons-rails'
   # paginator (github.com/amatsuda/kaminari)
   gem 'kaminari'
   # ckeditor integration gem for rails (github.com/galetahub/ckeditor)

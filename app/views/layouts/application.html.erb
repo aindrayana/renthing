@@ -6,10 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons' %>
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,900' %>
 </head>
 <body>
 
-<%= yield %>
+  <%= render "/layouts/nav" %>
+  <%= yield %>
 
+  <% if !user_signed_in? %>
+    <%= render "/layouts/login" %>
+  <% end %>
 </body>
 </html>
