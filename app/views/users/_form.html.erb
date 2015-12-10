@@ -1,65 +1,112 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="panel panel-default top-30">
+  <div class="panel-heading">your profile</div>
+  <div class="panel-body">
+    <%= form_for(@user, html: {class: "form-horizontal", role: "form"}) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+      <div class="form-group">
+        <%= f.label :first_name, class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :first_name, class: "form-control", placeholder: "first name" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :last_name, class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :last_name, class: "form-control", placeholder: "last name" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.email_field :email, class: "form-control", placeholder: "email" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone, class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :phone, class: "form-control", id: "phone", placeholder: "(xxx) xxx-xxxx" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :address, "Street address", class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :address, class: "form-control", placeholder: "address" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-2">&nbsp;</div>
+        <div class="col-sm-10">
+          <div class="col-sm-3">
+            <%= f.label :apt_suite_no, "apt/suite", class: "control-label" %>
+            <%= f.text_field :apt_suite_no, class: "form-control" %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.label :city, class: "control-label" %>
+            <%= f.text_field :city, class: "form-control" %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.label :province, class: "control-label" %>
+            <%= f.text_field :province, class: "form-control" %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.label :postal_code, class: "control-label" %>
+            <%= f.text_field :postal_code, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :aboutme, "About me", class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_area :aboutme, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :facebook_url, "Facebook Url", class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :facebook_url, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :twitter_url, "Twitter Url", class: "control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :twitter_url, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-2 text-right">
+        </div>
+        <div class="col-sm-10">
+          <%= f.submit "Update profile", class: "btn btn-primary" %>
+        </div>
+      </div>
+
+    <% end %>
+
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
-  <div class="field">
-    <%= f.label :avatar_img %><br>
-    <%= f.text_field :avatar_img %>
-  </div>
-  <div class="field">
-    <%= f.label :aboutme %><br>
-    <%= f.text_area :aboutme %>
-  </div>
-  <div class="field">
-    <%= f.label :facebook_url %><br>
-    <%= f.text_field :facebook_url %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter_url %><br>
-    <%= f.text_field :twitter_url %>
-  </div>
-  <div class="field">
-    <%= f.label :isadmin %><br>
-    <%= f.check_box :isadmin %>
-  </div>
-  <div class="field">
-    <%= f.label :isbanned %><br>
-    <%= f.check_box :isbanned %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+
+<script>
+$(window).load(function(){
+  $("#phone").keyup(function() {
+    var curchr = this.value.length;
+    var curval = $(this).val();
+    if (curchr == 3) {
+        $("#phone").val("(" + curval + ")" + "-");
+    } else if (curchr == 9) {
+        $("#phone").val(curval + "-");
+    }
+  });
+});
+</script>

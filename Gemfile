@@ -49,6 +49,8 @@ gem 'bcrypt', '~> 3.1.7'
   gem 'animate-rails'
   # URL slugging and permalink plugins for ActiveRecord (github.com/norman/friendly_id)
   gem 'friendly_id'
+  # A Ruby gem to wrap the functionalities of the Vide jQuery plugin (github.com/wazery/vider)
+  gem 'vider', github: 'wazery/vider'
 
   # support for Cross-Origin Resource Sharing (CORS) for Rack compatible web app (github.com/cyu/rack-cors)
   # gem 'rack-cors', :require => 'rack/cors'

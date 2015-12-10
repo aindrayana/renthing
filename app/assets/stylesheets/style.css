@@ -10,12 +10,11 @@ html, body {
 
 
 /* image background --------------------------------------------------------- */
-
 #home {
   width: 100%;
-  height: 80%;
+  height: 100%;
   overflow: hidden;
-  background: url("/assets/bicycle.jpg");
+  /*background: url("/assets/bicycle.jpg");*/
 	background-color: #222;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -25,8 +24,23 @@ html, body {
 		 -o-background-size: cover;
 			background-size: cover;
 	padding: 0;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
   /*padding-bottom: 51% ;*/
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
+
+  /*background: linear-gradient(
+      rgba(101,74,134, 0.4),
+      rgba(101,74,134, 0.4)
+    ), url("/assets/bicycle.jpg");*/
+
+}
+
+#home2 {
+  width: 100%;
+  height: 100%;
+  min-height: 705px;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+
 }
 
 p {
@@ -34,13 +48,12 @@ p {
 }
 
 #info {
-  display: table;
-  background: rgba(0, 0, 0, 0.4);
-  height: 100%;
   width: 100%;
+  position: absolute;
+  top: 40%;
 }
 #info #info-content {
-  display: table-cell;
+  /*display: table-cell;*/
   vertical-align: middle;
   text-align: center;
   /*text-transform: uppercase;*/
@@ -113,6 +126,90 @@ p {
 i.bold {
   font-weight: 900;
   margin-right: 5px;
+}
+
+
+/* side-nav ------------------------------------------------------------- */
+.right-side, .left-side {
+  /*height: 100% !important;*/
+  /*min-height: 680px;*/
+  font-family: "museo-sans";
+  font-weight: 300;
+}
+
+.sidenav-list, .sidenav-item {
+  list-style: none;
+  display: block;
+  font-size: 22px;
+  color: #1A4169;
+  margin: 0;
+  margin-top: 15px;
+  padding: 4px 15px;
+}
+
+.sidenav-item:hover, .sidenav-item:focus {
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-top: 13px;
+  background-color: transparent;
+}
+
+.user-page-bg.purple, .user-page-bg .purple {
+  background-color: #654a86!important;
+}
+
+.user-page-bg.white, .user-page-bg .white {
+  background-color: #fff!important;
+}
+
+.user-page-bg.grey, .user-page-bg .grey {
+  background-color: #777!important;
+}
+
+.user-page-bg.silver, .user-page-bg .silver {
+  background-color: #E9EBED!important;
+}
+
+.user-page-bg.color-1, .user-page-bg .color-1 {
+  background-color: #F4F4F4 !important;
+  color: #fff;
+}
+
+.user-page-bg.color-2, .user-page-bg .color-2 {
+  background-color: #fff !important;
+  background: linear-gradient(
+      rgba(0,0,134, 0.4),
+      rgba(0,0,134, 0.4)
+    );
+  color: #fff;
+}
+
+.user-profile {
+  color: #151515;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  position: relative;
+}
+
+/* profile ----------------------------------------------------------------- */
+.left-side {
+  min-height: 655px;
+  overflow:hidden;
+}
+
+.right-side {
+  overflow:scroll;
+  max-height: 655px;
+}
+.right-side .panel-default {
+  margin: 30px 30px;
+}
+.right-side .panel-body {
+  padding-right: 30px;
 }
 
 /* ------------------------------------------------------------------------- */

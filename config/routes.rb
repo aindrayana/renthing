@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :categories
   root "homes#index"
   resources :homes, only: [:index]
 

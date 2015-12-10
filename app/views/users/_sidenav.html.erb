@@ -1,0 +1,16 @@
+<div class="col-md-2 col-sm-2 white left-side">
+  <div class="top-50 text-center">
+    <img width="96" height="96" src="http://1.gravatar.com/avatar/ab72417310942ffc546b1e58b19d9988?s=96&d=mm&r=g" class="img-circle">
+  </div>
+  <div class="top-10 text-center font-24 user-profile">
+    <%= "#{current_user.first_name} #{current_user.last_name}" %>
+  </div>
+  <div class="top-30 text-center font-24">
+    <ul class="sidenav-list">
+      <li><%= link_to "profile", edit_user_path(current_user.id), class: "sidenav-item" %></li>
+      <li><%= link_to "listing", "javascript:void(0)", class: "sidenav-item" %></li>
+      <li><%= link_to "rent item", "javascript:void(0)", class: "sidenav-item" %></li>
+      <li><%= link_to "message", "javascript:void(0)", class: "sidenav-item" %></li>
+    </ul>
+  </div>
+</div>
