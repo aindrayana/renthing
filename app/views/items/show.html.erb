@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Hourly rate:</strong>
+  <%= @item.hourly_rate %>
+</p>
+
+<p>
+  <strong>Daily rate:</strong>
+  <%= @item.daily_rate %>
+</p>
+
+<p>
+  <strong>Weekly rate:</strong>
+  <%= @item.weekly_rate %>
+</p>
+
+<p>
+  <strong>Monthly rate:</strong>
+  <%= @item.monthly_rate %>
+</p>
+
+<p>
+  <strong>Isavailable:</strong>
+  <%= @item.isavailable %>
+</p>
+
+<p>
+  <strong>Ispublish:</strong>
+  <%= @item.ispublish %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @item.user %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @item.category %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
