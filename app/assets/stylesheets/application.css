@@ -13,6 +13,9 @@
  *= require font-awesome
  *= require simple-line-icons
  *= require animate
+ *= require chosen
+ *= require jquery.fileupload
+ *= require jquery.fileupload-ui
  *= require_tree .
  *= require_self
  */

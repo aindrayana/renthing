@@ -52,7 +52,7 @@ p {
   position: absolute;
   top: 40%;
 }
-#info #info-content {
+#info #info-content, #info.search {
   /*display: table-cell;*/
   vertical-align: middle;
   text-align: center;
@@ -63,7 +63,7 @@ p {
 #info #info-content h1 {
   color: #fff;
   border: 3px solid #fff;
-  text-align: center;
+  /*text-align: center;*/
   background: rgba(0, 0, 0, 0);
   font-size: 32px;
   font-weight: normal;
@@ -76,6 +76,38 @@ p {
   font-size: 36px;
 }
 
+
+/* search -------------------------------------------------------------------*/
+.search {
+  width: 50%;
+  border: 1px solid;
+  text-align: center;
+  background: transparent;
+  /*position: relative;*/
+  /*padding: 8px;*/
+  /*border-radius: 5px;*/
+  box-sizing: border-box;
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.search_listing {
+  /*padding-left: 35px;*/
+  padding: 10px 30px;
+  margin: 0;
+  width: 500px !important;
+  box-sizing: border-box;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  background: #e6e6e6;
+  color: #3c3c3c;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 29px;
+  /*transition: border 0.2s ease-in, opacity 0.2s ease-in, color 0.2s ease-in;*/
+
+}
 
 /* navbar transparent ------------------------------------------------------- */
 .navbar-default {
@@ -198,12 +230,14 @@ i.bold {
 /* profile ----------------------------------------------------------------- */
 .left-side {
   min-height: 655px;
+  max-height: 655px;
   overflow:hidden;
 }
 
 .right-side {
-  overflow:scroll;
+  min-height: 655px;
   max-height: 655px;
+  overflow:scroll;
 }
 .right-side .panel-default {
   margin: 30px 30px;
@@ -212,4 +246,5 @@ i.bold {
   padding-right: 30px;
 }
 
-/* ------------------------------------------------------------------------- */
+
+/* listing ----------------------------------------------------------------- */

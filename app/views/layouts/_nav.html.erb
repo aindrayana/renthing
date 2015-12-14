@@ -18,11 +18,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="btn btn-default" href="#services">list your item</a></li>
+                <li><%= link_to "list your item", new_item_path, class: "btn btn-default" %></li>
                 <% if user_signed_in? %>
                   <li><a class="nav-menu" href="#portfolio"><i class="fa fa-envelope-o"></i> Messages</a></li>
                   <li><a class="nav-menu" href="<%= edit_user_path(current_user.id) %>"><%= current_user.first_name %>
-                      <img width="28" height="28" src="https://a2.muscache.com/defaults/user_pic-50x50.png?v=2" class="img-circle">
+
+                      <% if !current_user.avatars.blank? %>
+                        <%= image_tag current_user.avatars, class: "img-circle", size: "28x28" %>
+                      <% else %>
+                        <img width="28" height="28" src="https://a2.muscache.com/defaults/user_pic-50x50.png?v=2" class="img-circle">
+                      <% end %>
                       </a></li>
                   <li><%= link_to "Log Out", sessions_path, class: "nav-menu", method: :delete %></li>
                 <% else %>

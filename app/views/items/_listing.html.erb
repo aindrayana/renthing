@@ -1,0 +1,50 @@
+
+<div class="panel panel-default top-30">
+  <div class="panel-heading">Your Listing</div>
+  <div class="panel-body">
+
+<!--  -->
+<% @items.each do |item| %>
+  <div class="well" style="display: inline-block; width: 100%;">
+
+    <div class="col-sm-4">
+      <div class="panel-image">
+        <div class="listing-img-container media-cover">
+          <img src="<%= item.images.first.file_name if item.images.first %>" width="250">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <h4><%= item.title %></h4>
+      <p><% if !item.hourly_rate.empty? %>
+          $<%= item.hourly_rate %> per hour
+          <% slash = true %>
+        <% end %>
+        <% if !item.daily_rate.empty? %>
+          <% if slash %> / <% end %>
+          $<%= item.daily_rate %> per day
+          <% slash = true %>
+        <% end %>
+        <% if !item.weekly_rate.empty? %>
+          <% if slash %> / <% end %>
+          $<%= item.weekly_rate %> per week
+          <% slash = true %>
+        <% end %>
+        <% if !item.monthly_rate.empty? %>
+          <% if slash %> / <% end %>
+          $<%= item.monthly_rate %> per month
+        <% end %>
+      </p>
+      <p><%= item.description %></p>
+      <p>
+        <%= link_to "Edit", edit_item_path(item) %> | 1 reservation | 1 message
+      </p>
+    </div>
+  </div>
+
+<% end %>
+<!--  -->
+
+
+  </div>
+</div>

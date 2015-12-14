@@ -40,7 +40,7 @@ gem 'bcrypt', '~> 3.1.7'
   # Easy file attachment management for ActiveRecord (github.com/thoughtbot/paperclip)
   gem 'paperclip'
   # Classier solution for file uploads for Rails (github.com/carrierwaveuploader/carrierwave)
-  gem 'carrierwave'
+  gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
   # A ruby wrapper for ImageMagick (github.com/minimagick/minimagick)
   gem 'mini_magick'
   # components to create forms for Rails (github.com/plataformatec/simple_form)
@@ -51,6 +51,10 @@ gem 'bcrypt', '~> 3.1.7'
   gem 'friendly_id'
   # A Ruby gem to wrap the functionalities of the Vide jQuery plugin (github.com/wazery/vider)
   gem 'vider', github: 'wazery/vider'
+  # library for making long, unwieldy select boxes more user friendly. (github.com/tsechingho/chosen-rails)
+  gem 'chosen-rails', git: 'git://github.com/tsechingho/chosen-rails.git'
+  # multiple file selection, drag&drop, progress bars and preview images for jQuery (github.com/tors/jquery-fileupload-rails)
+  gem "jquery-fileupload-rails"
 
   # support for Cross-Origin Resource Sharing (CORS) for Rack compatible web app (github.com/cyu/rack-cors)
   # gem 'rack-cors', :require => 'rack/cors'

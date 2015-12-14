@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :items
-  resources :categories
   root "homes#index"
   resources :homes, only: [:index]
 
   resources :users
+
+  resources :items do
+    resources :images
+  end
+
+  resources :categories
 
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection

@@ -1,6 +1,12 @@
 <div class="col-md-2 col-sm-2 white left-side">
   <div class="top-50 text-center">
-    <img width="96" height="96" src="http://1.gravatar.com/avatar/ab72417310942ffc546b1e58b19d9988?s=96&d=mm&r=g" class="img-circle">
+    <%#= image_tag "user-icon-big-2.png", class: "img-circle", size: "96x96" %>
+    <% if !current_user.avatars.blank? %>
+      <%= image_tag current_user.avatars, class: "img-circle", size: "96x96" %>
+    <% else %>
+      <%= image_tag "user-icon-big-2.png", class: "img-circle", size: "96x96" %>
+    <% end %>
+    <!-- <img width="96" height="96" src="http://1.gravatar.com/avatar/ab72417310942ffc546b1e58b19d9988?s=96&d=mm&r=g" class="img-circle"> -->
   </div>
   <div class="top-10 text-center font-24 user-profile">
     <%= "#{current_user.first_name} #{current_user.last_name}" %>
@@ -8,7 +14,7 @@
   <div class="top-30 text-center font-24">
     <ul class="sidenav-list">
       <li><%= link_to "profile", edit_user_path(current_user.id), class: "sidenav-item" %></li>
-      <li><%= link_to "listing", "javascript:void(0)", class: "sidenav-item" %></li>
+      <li><%= link_to "listing", items_path, class: "sidenav-item" %></li>
       <li><%= link_to "rent item", "javascript:void(0)", class: "sidenav-item" %></li>
       <li><%= link_to "message", "javascript:void(0)", class: "sidenav-item" %></li>
     </ul>

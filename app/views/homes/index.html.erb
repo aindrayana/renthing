@@ -3,16 +3,30 @@
     <div id="info">
       <div id="info-content">
         <h1 class="text-branding text-jumbo text-contrast space-1">
-          Welcome home
+          Welcome to ren<i class="bold">t</i>hing
         </h1>
         <h4>rent items locally or make profit of your personal items</h4>
+
+        <div class="search">
+          <%= form_tag items_path, class: "navbar-form navbar-left", role: "search" do %>
+            <div class="form-group">
+              <%= text_field_tag(:search, nil, class: "form-control search_listing", placeholder: "search by keyword") %>
+              &nbsp;&nbsp;
+              <%= submit_tag "Search", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+
       </div>
     </div>
+
 
     <div id="vider-element" style="width: 100%; height: 100%; position: relative;"
         data-vide-bg="assets/vancouver_timelapse.mp4"
         data-vide-options="volume: 1, playback_rate: 1, muted: true, loop: true, autoplay: true, position: 50% 50%, poster_type: detect">
     </div>
+
+
   </section>
 
   <a name="blog-list"></a>

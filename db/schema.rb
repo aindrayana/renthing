@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210234542) do
+ActiveRecord::Schema.define(version: 20151212060942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20151210234542) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "file_name"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "images", ["item_id"], name: "index_images_on_item_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
@@ -47,7 +56,6 @@ ActiveRecord::Schema.define(version: 20151210234542) do
     t.string   "phone"
     t.string   "password_digest"
     t.text     "address"
-    t.string   "avatar_img"
     t.text     "aboutme"
     t.string   "facebook_url"
     t.string   "twitter_url"
@@ -61,8 +69,10 @@ ActiveRecord::Schema.define(version: 20151210234542) do
     t.string   "postal_code"
     t.float    "longitude"
     t.float    "latitude"
+    t.string   "avatars"
   end
 
+  add_foreign_key "images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
 end

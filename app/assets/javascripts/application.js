@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.vide
+//= require chosen-jquery
+//= require items
+//= require jquery-fileupload
 //= require bootstrap
 //= require ckeditor/init
 //= require_tree .

@@ -1,34 +1,40 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  # GET /items
-  # GET /items.json
+
   def index
-    @items = Item.all
+    # @items = Item.all
+    @items = Item.where("user_id = #{current_user.id}" )
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
   end
 
-  # GET /items/new
   def new
     @item = Item.new
+    @images = @item.images.build
   end
 
-  # GET /items/1/edit
   def edit
   end
 
-  # POST /items
-  # POST /items.json
   def create
+    # @item = Item.last
     @item = Item.new(item_params)
-
+    @item.user = current_user
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+
+        params[:images]['file_name'].each do |img|
+          @image = @item.images.create(file_name: img)
+          @image.save
+          # puts "file_image_name: #{img}"
+         end
+
+        # render text: params[:images]['file_name']
+
+        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -37,11 +43,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
       if @item.update(item_params)
+
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
@@ -51,8 +56,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item.destroy
     respond_to do |format|
@@ -62,13 +65,14 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :description, :hourly_rate, :daily_rate, :weekly_rate, :monthly_rate, :isavailable, :ispublish, :user_id, :category_id)
+      params.require(:item).permit(:title, :description, :hourly_rate, :daily_rate,
+                                  :weekly_rate, :monthly_rate, :isavailable,
+                                  :ispublish, :user_id, :category_id,
+                                  images_attributes:[:file_name, :item_id, :id])
     end
 end
