@@ -55,6 +55,13 @@ gem 'bcrypt', '~> 3.1.7'
   gem 'chosen-rails', git: 'git://github.com/tsechingho/chosen-rails.git'
   # multiple file selection, drag&drop, progress bars and preview images for jQuery (github.com/tors/jquery-fileupload-rails)
   gem "jquery-fileupload-rails"
+  # complete Ruby geocoding solution (github.com/alexreisner/geocoder)
+  gem 'geocoder'
+  # enables easy Google map + overlays creation (github.com/apneadiving/Google-Maps-for-Rails)
+  gem 'gmaps4rails'
+  # underscore.js asset-pipeline provider (github.com/rweng/underscore-rails)
+  gem 'underscore-rails'
+
 
   # support for Cross-Origin Resource Sharing (CORS) for Rack compatible web app (github.com/cyu/rack-cors)
   # gem 'rack-cors', :require => 'rack/cors'

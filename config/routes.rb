@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :images
   end
 
+  resources :listings, only: [:index, :show]
+  post "/listings" => "listings#index"
+
   resources :categories
 
   resources :sessions, only: [:new, :create] do

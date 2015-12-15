@@ -1,0 +1,70 @@
+// Place all the styles related to the listings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.panel-image {
+  position: relative;
+  display: block;
+  /*border: 1px solid;*/
+}
+
+#image-listing {
+  max-height: 244px;
+}
+
+.panel-card {
+  padding: 10px;
+  position: relative;
+  margin: 0;
+  font-family: "museo-sans";
+  font-weight: 300;
+  display: block;
+  /*border: 1px solid;*/
+}
+
+.listing-label {
+  top: 200px;
+  /*bottom: 150px;*/
+  left: 5;
+  padding: 7px 10px;
+  background-color: rgba(60,63,64,0.9);
+  position: absolute;
+  color: #fff;
+}
+
+.listing-label:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* search inside listing ---------------------------------------------------*/
+.search-inside {
+  width: 100%;
+  /*border: 1px solid #888;*/
+  /*text-align: center;*/
+  background: transparent;
+  /*position: relative;*/
+  /*padding: 8px;*/
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 30px 0;
+}
+
+.search-inside-listing {
+
+  /*padding-left: 35px;*/
+  padding: 10px 30px;
+  margin: 0;
+  width: 550px !important;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  border-radius: 5px;
+  background: #fff;
+  color: #3c3c3c;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 29px;
+
+}

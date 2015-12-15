@@ -8,11 +8,18 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
 
+  geocoded_by :full_street_address
+  after_validation :geocode
+
   after_initialize :set_default_values
 
   mount_uploader :avatars, ImageUploader
 
   private
+
+  def full_street_address
+    "#{address} #{city} #{province} #{postal_code}"
+  end
 
   def set_default_values
     self.isadmin ||= false

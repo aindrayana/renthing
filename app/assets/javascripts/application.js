@@ -18,5 +18,7 @@
 //= require items
 //= require jquery-fileupload
 //= require bootstrap
+//= require underscore
+//= require gmaps/google
 //= require ckeditor/init
 //= require_tree .
