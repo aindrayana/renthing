@@ -61,7 +61,9 @@ gem 'bcrypt', '~> 3.1.7'
   gem 'gmaps4rails'
   # underscore.js asset-pipeline provider (github.com/rweng/underscore-rails)
   gem 'underscore-rails'
-
+  # packages the bootstrap-datetimepicker for the Rails + asset pipeline (github.com/TrevorS/bootstrap3-datetimepicker-rails)
+  gem 'momentjs-rails', '>= 2.9.0'
+  gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
   # support for Cross-Origin Resource Sharing (CORS) for Rack compatible web app (github.com/cyu/rack-cors)
   # gem 'rack-cors', :require => 'rack/cors'

@@ -68,3 +68,30 @@
   line-height: 29px;
 
 }
+// -- sub-text for date ------------------------------------------------------
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+
+.title-review {
+  border: 1px solid #999;
+  margin: 25px 0;
+  padding: 10px;
+  background-color: #F5F5F5;
+}
+
+.listing-rate a.list-group-item:hover,
+  .listing-rate a.list-group-item:focus {
+    text-decoration: none;
+    color: #FFF;
+    // background-color: #E46C46;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.listing-rate .list-group-item {
+  position: relative;
+  display: inline-block;
+}

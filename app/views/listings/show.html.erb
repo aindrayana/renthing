@@ -68,75 +68,95 @@
     <!-- item description -->
         <div id="description" class="museo">
           <%= @item.description %>
-          <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo. Cum ex summo aliquam sapientem, alia zril interpretaris pro ea, usu adhuc veniam dignissim no. Modo augue eu vis, dico aliquip patrioque pri ad, an has adhuc viris. In has laoreet posidonium, mandamus periculis ne mel, vis dicit latine vulputate eu. Sit an inermis noluisse perpetua, cum an veri affert maiestatis. In est ferri dolorem, graeci omnesque an mei.</p>
+          <!-- <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo. Cum ex summo aliquam sapientem, alia zril interpretaris pro ea, usu adhuc veniam dignissim no. Modo augue eu vis, dico aliquip patrioque pri ad, an has adhuc viris. In has laoreet posidonium, mandamus periculis ne mel, vis dicit latine vulputate eu. Sit an inermis noluisse perpetua, cum an veri affert maiestatis. In est ferri dolorem, graeci omnesque an mei.</p> -->
         </div>
         <div class="hr-10"></div>
     <!-- rental rates -->
         <div id="rental-rate" class="top-10">
           <div style="display: block; width: 100%">
-            Rental rate
+            Choose rental rate
           </div>
-          <% if !@item.hourly_rate.empty? %>
-            <div class="rental-rate text-center right-20">
-              <sup class="h6">$</sup>
-              <span class="h1"><%= @item.hourly_rate %></span><br>
-              <span class="h5">per hour</span>
-            </div>
-          <% end %>
-          <% if !@item.daily_rate.empty? %>
-            <div class="rental-rate text-center right-20">
-              <sup class="h6">$</sup>
-              <span class="h1"><%= @item.daily_rate %></span><br>
-              <span class="h5">per day</span>
-            </div>
-          <% end %>
-          <% if !@item.weekly_rate.empty? %>
-            <div class="rental-rate text-center right-20">
-              <sup class="h6">$</sup>
-              <span class="h1"><%= @item.weekly_rate %></span><br>
-              <span class="h5">per week</span>
-            </div>
-          <% end %>
-          <% if !@item.monthly_rate.empty? %>
-            <div class="rental-rate text-center right-20">
-              <sup class="h6">$</sup>
-              <span class="h1"><%= @item.monthly_rate %></span><br>
-              <span class="h5">per month</span>
-            </div>
-          <% end %>
+
+          <div class="list-group listing-rate">
+            <% if !@item.hourly_rate.empty? %>
+              <a href="#" class="list-group-item" data-term="hourly" data-rate="<%= @item.hourly_rate %>">
+                <sup class="h6">$</sup>
+                <span class="h1"><%= @item.hourly_rate %></span><br>
+                <span class="h5">per hour</span>
+              </a>
+            <% end %>
+            <% if !@item.daily_rate.empty? %>
+              <a href="#" class="list-group-item" data-term="daily" data-rate="<%= @item.daily_rate %>">
+                <sup class="h6">$</sup>
+                <span class="h1"><%= @item.daily_rate %></span><br>
+                <span class="h5">per day</span>
+              </a>
+            <% end %>
+            <% if !@item.weekly_rate.empty? %>
+              <a href="#" class="list-group-item" data-term="weekly" data-rate="<%= @item.weekly_rate %>">
+                <sup class="h6">$</sup>
+                <span class="h1"><%= @item.weekly_rate %></span><br>
+                <span class="h5">per week</span>
+              </a>
+            <% end %>
+            <% if !@item.monthly_rate.empty? %>
+              <a href="#" class="list-group-item" data-term="monthly" data-rate="<%= @item.monthly_rate %>">
+                <sup class="h6">$</sup>
+                <span class="h1"><%= @item.monthly_rate %></span><br>
+                <span class="h5">per month</span>
+              </a>
+            <% end %>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+    <!-- reservation section -->
+    <%= form_for(@item) do |f| %>
+        <div id="lister" class="top-20">
+          Reservation date:<br>
+          <!--  -->
+                  <div class='col-sm-1'>from</div>
+                  <div class='col-sm-5'>
+                      <div class="form-group">
+                          <div class='input-group date' id='datetimepicker1'>
+                            <%= f.text_field :created_at, class: "form-control", placeholder: "mm/dd/yyyy" %>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class='col-sm-1'>to</div>
+                  <div class='col-sm-5'>
+                      <div class="form-group">
+                          <div class='input-group date' id='datetimepicker2'>
+                            <%= f.text_field :created_at, class: "form-control", placeholder: "mm/dd/yyyy" %>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                          </div>
+                      </div>
+                  </div>
+                  <script type="text/javascript">
+                      $(function () {
+                          $('#datetimepicker1').datetimepicker();
+                          $('#datetimepicker2').datetimepicker();
+                      });
+                  </script>
+
+          <!--  -->
         </div>
         <div class="clearfix"></div>
         <div class="hr-10"></div>
-    <!-- reservation section -->
-        <div id="lister">
-          Reservation:<br>
-          <!-- <span>No one reserve your item at the moment</span> -->
-          <ul class="list-group">
-            <li class="list-group-item">
-              <span class="pull-right">contact <br>approve</span>
-              Julia has made reservation for Daily Rate of $5 per day<br>
-              from Dec 15, 2015 to Dec 20, 2015
-            </li>
-            <li class="list-group-item">
-              <span class="pull-right">contact<br>approve</span>
-              Adelle has made reservation for Daily Rate of $5 per day<br>
-              from Dec 15, 2015 to Dec 20, 2015
-            </li>
-          </ul>
+        <div id="reservation">
+          <% if user_signed_in? %>
+            <%= f.submit "Make Reservation", class: "btn btn-primary" %>
+          <% else %>
+            Please Log in to make a reservation
+          <% end %>
         </div>
-    <!-- message section -->
-        <div id="message">
-          Message from user:
 
-          <ul class="list-group">
-            <li class="list-group-item">
-              <span class="pull-right">reply</span>
-              <%= image_tag "http://lorempixel.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
-          </ul>
-        </div>
+      <% end %>
+
       </div>
     </div>
   </div>

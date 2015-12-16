@@ -1,4 +1,6 @@
 class ListingsController < ApplicationController
+  before_action :set_item, only: [:show]
+
   def index
     search_params = params.permit([:search])
     @search = search_params[:search]
@@ -6,4 +8,10 @@ class ListingsController < ApplicationController
     # render text: "search: #{@search} <br>path: #{request.env['PATH_INFO']}"
     # render text: "search: #{@search}"
   end
+
+  private
+    def set_item
+      @item = Item.find(params[:id])
+    end
+
 end

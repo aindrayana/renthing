@@ -15,15 +15,15 @@
           <% end %>
         </div>
 
-
         <% if @items.present? %>
           <!-- <div class="top-20">
             <%#= @items.count %> items found for "<%= @search %>"
           </div> -->
           <% @items.each do |item| %>
             <div class="col-sm-6" class="panel-image">
-              <img src="<%= item.images.first.file_name if item.images.first %>" width="325" id="image-listing">
-              <a href="#" class="listing-label">
+              <%= link_to image_tag("#{item.images.first.file_name if item.images.first}", width: "325"),
+                    listing_path(item)  %>
+              <a href="<%= listing_path(item) %>" class="listing-label">
                 <div>
                   <span class="h3">from </span>
                   <sup class="h6">$</sup>
@@ -47,8 +47,9 @@
 
                 </div>
               </a>
-              <div class="panel-card font-16"><%= item.title %><br>
-                <span class="font-14">Location: <%= (item.city).titleize %></span>
+              <div class="panel-card font-16">
+                <%= link_to item.title, listing_path(item)  %>
+                <br><span class="font-14">Location: <%= (item.city).titleize %></span>
               </div>
             </div>
           <% end %>

@@ -8,6 +8,7 @@ html, body {
   height: 100%;
 }
 
+.museo {font-family: "museo-sans"; font-weight: 300;}
 
 /* image background --------------------------------------------------------- */
 #home {
@@ -259,4 +260,15 @@ i.bold {
   height: 100%;
   background-color: #fff;
   overflow: scroll;
+}
+
+/* rental rate ------------------------------------------------------------- */
+.rental-rate {
+  display: block;
+  border: 1px solid #eee;
+  padding: 20px 10px;
+  float: left;
+}
+.rental-image {
+  border-radius: 10px; box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
 }

@@ -20,5 +20,7 @@
 //= require bootstrap
 //= require underscore
 //= require gmaps/google
+//= require moment
+//= require bootstrap-datetimepicker
 //= require ckeditor/init
 //= require_tree .

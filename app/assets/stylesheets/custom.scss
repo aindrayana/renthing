@@ -6,45 +6,33 @@
    }
  }
 
- @for $i from 1 through 10 {
+ @for $i from 1 through 12 {
    .top-#{10 * $i} {
      margin-top: #{10 * $i}px;
    }
  }
 
- @for $i from 1 through 10 {
+ @for $i from 1 through 12 {
    .bottom-#{10 * $i} {
      margin-bottom: #{10 * $i}px;
    }
  }
 
+ @for $i from 1 through 20 {
+   .left-#{2 * $i} {
+     margin-left: #{2 * $i}px;
+   }
+ }
 
- // .font-10 {font-size:10px;}
- // .font-12 {font-size:12px;}
- // .font-16 {font-size:16px;}
- // .font-18 {font-size:18px;}
- // .font-24 {font-size:24px;}
- // .font-28 {font-size:28px;}
- // .font-32 {font-size:32px;}
- // .font-37 {font-size:37px;}
- // .font-42 {font-size:42px;}
+ @for $i from 1 through 20 {
+   .right-#{2 * $i} {
+     margin-right: #{2 * $i}px;
+   }
+ }
 
- // .top-100 {margin-top:100px;}
- // .top-90 {margin-top:90px;}
- // .top-80 {margin-top:80px;}
- // .top-70 {margin-top:70px;}
- // .top-60 {margin-top:60px;}
- // .top-50 {margin-top:50px;}
- // .top-40 {margin-top:40px;}
- // .top-30 {margin-top:30px;}
- // .top-20 {margin-top:20px;}
- // .top-10 {margin-top:10px;}
-
- // .bottom-80 {margin-top:80px;}
- // .bottom-70 {margin-top:70px;}
- // .bottom-60 {margin-top:60px;}
- // .bottom-50 {margin-top:50px;}
- // .bottom-40 {margin-top:40px;}
- // .bottom-30 {margin-top:30px;}
- // .bottom-20 {margin-top:20px;}
- // .bottom-10 {margin-top:10px;}
+ @for $i from 2 through 10 {
+   .hr-#{2 * $i} {
+     border-bottom: 1px solid #ccc;
+     margin: #{2 * $i}px 0;
+   }
+ }

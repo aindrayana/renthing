@@ -5,10 +5,11 @@ class ItemsController < ApplicationController
 
   def index
     # @items = Item.all
-    @items = Item.where("user_id = #{current_user.id}" )
+    @items = Item.where("user_id = #{current_user.id}")
   end
 
   def show
+
   end
 
   def new

@@ -10,12 +10,14 @@
     <div class="col-sm-4">
       <div class="panel-image">
         <div class="listing-img-container media-cover">
-          <img src="<%= item.images.first.file_name if item.images.first %>" width="250">
+          <%= link_to image_tag("#{item.images.first.file_name if item.images.first}", width: "250"),
+                item_path(item)  %>
+          <p class="text-center"><%= link_to "edit", edit_item_path(item) %> | unpublish</p>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
-      <h4><%= item.title %></h4>
+      <h4><%= link_to item.title, item_path(item) %></h4>
       <p><% if !item.hourly_rate.empty? %>
           $<%= item.hourly_rate %> per hour
           <% slash = true %>
@@ -36,9 +38,9 @@
         <% end %>
       </p>
       <p><%= item.description %></p>
-      <p>
-        <%= link_to "Edit", edit_item_path(item) %> | 1 reservation | 1 message
-      </p>
+      <p>You have: 1 reservation and 1 message</p>
+      <p>Status: Available | Rented by John on Dec 12, 2015 until Dec 15, 2015 | Returned</p>
+      <p>State Machine: Unpublish | Available | Rented | Returned to draft| Lost</p>
     </div>
   </div>
 
