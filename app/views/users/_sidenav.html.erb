@@ -15,7 +15,7 @@
     <ul class="sidenav-list">
       <li><%= link_to "profile", edit_user_path(current_user.id), class: "sidenav-item" %></li>
       <li><%= link_to "listing", items_path, class: "sidenav-item" %></li>
-      <li><%= link_to "my rental", "javascript:void(0)", class: "sidenav-item" %></li>
+      <li><%= link_to "my rental", reservations_path, class: "sidenav-item" %></li>
       <li><%= link_to "message", "javascript:void(0)", class: "sidenav-item" %></li>
     </ul>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215084114) do
+ActiveRecord::Schema.define(version: 20151216204624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,26 @@ ActiveRecord::Schema.define(version: 20151215084114) do
     t.string   "postal_code"
     t.float    "longitude"
     t.float    "latitude"
+    t.string   "aasm_state"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.string   "rent_term"
+    t.string   "rent_fee"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "aasm_state"
+  end
+
+  add_index "reservations", ["item_id"], name: "index_reservations_on_item_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -81,4 +97,6 @@ ActiveRecord::Schema.define(version: 20151215084114) do
   add_foreign_key "images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
+  add_foreign_key "reservations", "items"
+  add_foreign_key "reservations", "users"
 end

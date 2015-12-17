@@ -3,7 +3,18 @@
   </div>
   <div class="listings">
     <div class="container" style="margin: 0; width: 100%;">
-      <div class="col-sm-6 top-50 text-center">
+      <div class="search-inside text-center" style="margin-bottom:10px;">
+        <%= form_tag listings_path, class: "navbar-form", role: "search" do %>
+          <div class="form-group">
+            <%= text_field_tag(:search, nil, class: "form-control search-inside-listing", placeholder: "search by keyword") %>
+            &nbsp;&nbsp;
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          </div>
+          <hr>
+        <% end %>
+      </div>
+
+      <div class="col-sm-6 text-center">
     <!-- listing big images section -->
         <%= image_tag("#{@item.images.first.file_name if @item.images.first}", width: "99%",
           class: "bottom-20 rental-image") %>
@@ -40,7 +51,7 @@
             </li>
           </ul>
       </div>
-      <div class="col-sm-6 top-30">
+      <div class="col-sm-6">
     <!-- title and avatars -->
         <div id="title" class="h3"><%= @item.title %></div>
         <div class="owner right-20" style="position: relative; display: inline-block; float:left;" >
@@ -110,7 +121,7 @@
         </div>
         <div class="clearfix"></div>
     <!-- reservation section -->
-    <%= form_for(@item) do |f| %>
+    <%= form_for [@item, @reservation] do |f| %>
         <div id="lister" class="top-20">
           Reservation date:<br>
           <!--  -->
@@ -118,7 +129,7 @@
                   <div class='col-sm-5'>
                       <div class="form-group">
                           <div class='input-group date' id='datetimepicker1'>
-                            <%= f.text_field :created_at, class: "form-control", placeholder: "mm/dd/yyyy" %>
+                            <%= f.text_field :date_start, class: "form-control", placeholder: "yyyy/mm/dd" %>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -129,7 +140,7 @@
                   <div class='col-sm-5'>
                       <div class="form-group">
                           <div class='input-group date' id='datetimepicker2'>
-                            <%= f.text_field :created_at, class: "form-control", placeholder: "mm/dd/yyyy" %>
+                            <%= f.text_field :date_end, class: "form-control", placeholder: "yyyy/mm/dd" %>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -138,8 +149,12 @@
                   </div>
                   <script type="text/javascript">
                       $(function () {
-                          $('#datetimepicker1').datetimepicker();
-                          $('#datetimepicker2').datetimepicker();
+                          $('#datetimepicker1').datetimepicker({
+                            format: 'YYYY/MM/DD HH:mm'
+                          });
+                          $('#datetimepicker2').datetimepicker({
+                            format: 'YYYY/MM/DD HH:mm'
+                          });
                       });
                   </script>
 
@@ -147,9 +162,14 @@
         </div>
         <div class="clearfix"></div>
         <div class="hr-10"></div>
-        <div id="reservation">
+        <div id="reservation"></div>
+        <div id="submit">
           <% if user_signed_in? %>
-            <%= f.submit "Make Reservation", class: "btn btn-primary" %>
+            <% if !@item.reserved? %>
+              <%= f.submit "Make Reservation", class: "btn btn-primary" %>
+            <% else %>
+              This is has been reserved by user
+            <% end %>
           <% else %>
             Please Log in to make a reservation
           <% end %>

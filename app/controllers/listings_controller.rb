@@ -5,8 +5,10 @@ class ListingsController < ApplicationController
     search_params = params.permit([:search])
     @search = search_params[:search]
     @items = Item.where(["title ilike ? OR description ilike ?", "%#{@search}%", "%#{@search}%"]).order("created_at DESC")
-    # render text: "search: #{@search} <br>path: #{request.env['PATH_INFO']}"
-    # render text: "search: #{@search}"
+  end
+
+  def show
+    @reservation = Reservation.new
   end
 
   private

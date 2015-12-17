@@ -5,42 +5,58 @@
 
 <!--  -->
 <% @items.each do |item| %>
-  <div class="well" style="display: inline-block; width: 100%;">
+  <div class="well museo font-16" style="display: inline-block; width: 100%;">
 
     <div class="col-sm-4">
       <div class="panel-image">
         <div class="listing-img-container media-cover">
           <%= link_to image_tag("#{item.images.first.file_name if item.images.first}", width: "250"),
                 item_path(item)  %>
-          <p class="text-center"><%= link_to "edit", edit_item_path(item) %> | unpublish</p>
+          <p class="text-center"><%= link_to "edit", edit_item_path(item) %> | <a href="#">unpublish</a></p>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
       <h4><%= link_to item.title, item_path(item) %></h4>
-      <p><% if !item.hourly_rate.empty? %>
-          $<%= item.hourly_rate %> per hour
-          <% slash = true %>
+      <p><%= item.description %></p>
+
+      <div id="rental-rate" class="top-10">
+        <div style="display: block; width: 100%">
+          Rental rate
+        </div>
+        <% if !item.hourly_rate.empty? %>
+          <div class="rental-rate text-center right-20">
+            <sup class="h6">$</sup>
+            <span class="h1"><%= item.hourly_rate %></span><br>
+            <span class="h5">per hour</span>
+          </div>
         <% end %>
         <% if !item.daily_rate.empty? %>
-          <% if slash %> / <% end %>
-          $<%= item.daily_rate %> per day
-          <% slash = true %>
+          <div class="rental-rate text-center right-20">
+            <sup class="h6">$</sup>
+            <span class="h1"><%= item.daily_rate %></span><br>
+            <span class="h5">per day</span>
+          </div>
         <% end %>
         <% if !item.weekly_rate.empty? %>
-          <% if slash %> / <% end %>
-          $<%= item.weekly_rate %> per week
-          <% slash = true %>
+          <div class="rental-rate text-center right-20">
+            <sup class="h6">$</sup>
+            <span class="h1"><%= item.weekly_rate %></span><br>
+            <span class="h5">per week</span>
+          </div>
         <% end %>
         <% if !item.monthly_rate.empty? %>
-          <% if slash %> / <% end %>
-          $<%= item.monthly_rate %> per month
+          <div class="rental-rate text-center right-20">
+            <sup class="h6">$</sup>
+            <span class="h1"><%= item.monthly_rate %></span><br>
+            <span class="h5">per month</span>
+          </div>
         <% end %>
-      </p>
-      <p><%= item.description %></p>
-      <p>You have: 1 reservation and 1 message</p>
-      <p>Status: Available | Rented by John on Dec 12, 2015 until Dec 15, 2015 | Returned</p>
-      <p>State Machine: Unpublish | Available | Rented | Returned to draft| Lost</p>
+      </div>
+      <div class="clearfix bottom-20"></div>
+      <p>Status: <%= item.aasm_state.capitalize %></p>
+        <!-- <br>Available | Rented by John on Dec 12, 2015 until Dec 15, 2015 | Returned -->
+      <!-- <p>State Machine: Unpublish | Available | Rented | Returned to draft| Lost</p> -->
     </div>
   </div>
 

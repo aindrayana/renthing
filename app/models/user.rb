@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
 
   has_many :items, dependent: :nullify
 
+  has_many :reservations, dependent: :nullify
+  has_many :items_reservations, through: :items, source: :reservations
+
 # ---------------------------------------------------------------------------- #
   validates :first_name, presence: true
   validates :last_name, presence: true

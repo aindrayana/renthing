@@ -64,6 +64,8 @@ gem 'bcrypt', '~> 3.1.7'
   # packages the bootstrap-datetimepicker for the Rails + asset pipeline (github.com/TrevorS/bootstrap3-datetimepicker-rails)
   gem 'momentjs-rails', '>= 2.9.0'
   gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+  # AASM - State machines for Ruby classes (github.com/aasm/aasm)
+  gem 'aasm'
 
   # support for Cross-Origin Resource Sharing (CORS) for Rack compatible web app (github.com/cyu/rack-cors)
   # gem 'rack-cors', :require => 'rack/cors'

@@ -68,7 +68,6 @@
     <!-- item description -->
         <div id="description" class="museo">
           <%= @item.description %>
-          <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo. Cum ex summo aliquam sapientem, alia zril interpretaris pro ea, usu adhuc veniam dignissim no. Modo augue eu vis, dico aliquip patrioque pri ad, an has adhuc viris. In has laoreet posidonium, mandamus periculis ne mel, vis dicit latine vulputate eu. Sit an inermis noluisse perpetua, cum an veri affert maiestatis. In est ferri dolorem, graeci omnesque an mei.</p>
         </div>
         <div class="hr-10"></div>
     <!-- rental rates -->
@@ -110,19 +109,55 @@
     <!-- reservation section -->
         <div id="lister">
           Reservation:<br>
-          <!-- <span>No one reserve your item at the moment</span> -->
+          <% if @item.available? %>
+            <span>No one reserve your item at the moment</span>
+          <% elsif @item.reserved? %>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="pull-right">
+                  <!-- contact <br> -->
+                  <% if @item.may_approve? %>
+                    <%= link_to "approve", item_reservations_approve_path(@item),
+                          method: :post,
+                          data: {confirm: "Are you sure want to approve?"},
+                          class: "btn btn-primary" %>
+                  <% end %>
+                </span>
+                <strong>Julia</strong> has made reservation for
+                  <strong><%= @item.reservations.first.rent_term.upcase %></strong> rate of
+                  <strong>$<%= @item.reservations.first.rent_fee %></strong> per day<br>
+                from <strong><%= @item.reservations.first.date_start.strftime("%B %d, %Y at %I:%M %P") %></strong><br>
+                to <strong><%= @item.reservations.first.date_end.strftime("%B %d, %Y at %I:%M %P") %></strong>
+              </li>
+            </ul>
+          <% elsif @item.approved? %>
           <ul class="list-group">
             <li class="list-group-item">
-              <span class="pull-right">contact <br>approve</span>
-              Julia has made reservation for Daily Rate of $5 per day<br>
-              from Dec 15, 2015 to Dec 20, 2015
-            </li>
-            <li class="list-group-item">
-              <span class="pull-right">contact<br>approve</span>
-              Adelle has made reservation for Daily Rate of $5 per day<br>
-              from Dec 15, 2015 to Dec 20, 2015
+              <span class="pull-right">
+                <!-- contact <br> -->
+                <% if @item.may_return? %>
+                  <%= link_to "Item Returned?", item_reservations_return_path(@item),
+                        method: :post,
+                        data: {confirm: "Are you sure want to mark this as returned?"},
+                        class: "btn btn-primary" %>
+                <% end %>
+                <%# if @item.may_cancel? %>
+                  <%#= link_to "Cancel", item_reservations_cancel_path(@item),
+                        method: :post,
+                        data: {confirm: "Are you sure want to cancel?"},
+                        class: "btn btn-primary" %>
+                <%# end %>
+              </span>
+                On <%= @item.updated_at.strftime("%B %d, %Y") %><br>
+                You have approved reservation by
+                <strong>Julia</strong><br>
+                with <strong><%= @item.reservations.first.rent_term.upcase %></strong> rate of
+                <strong>$<%= @item.reservations.first.rent_fee %></strong> per day<br>
+              from <strong><%= @item.reservations.first.date_start.strftime("%B %d, %Y at %I:%M %P") %></strong><br>
+              to <strong><%= @item.reservations.first.date_end.strftime("%B %d, %Y at %I:%M %P") %></strong>
             </li>
           </ul>
+          <% end %>
         </div>
     <!-- message section -->
         <div id="message">
