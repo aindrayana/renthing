@@ -1,0 +1,73 @@
+
+<div class="panel panel-default top-30">
+  <div class="panel-heading">Items that you rent</div>
+  <div class="panel-body">
+
+<!--  -->
+<% if @res.count > 0 %>
+  <% @res.each do |res| %>
+    <div class="museo font-16" style="display: inline-block; width: 100%;">
+
+      <div class="col-sm-4">
+        <div class="panel-image">
+          <div class="listing-img-container media-cover top-20">
+            <%= link_to image_tag("#{res.item.images.first.file_name if res.item.images.first}", width: "280"),
+                  listing_path(res.item)  %>
+                  <p><span class="label label-primary"><%= res.item.aasm_state.capitalize %></span>
+                    <% if (res.item.aasm_state='reserved') %>
+                      <span class="label label-primary">Pending Approval by Owner</span>
+                    <% elsif (res.item.aasm_state='approved') %>
+                      <span class="label label-primary">You rent this item</span>
+                    <% end %>
+                  </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <h4><%= link_to res.item.title, item_path(res.item) %></h4>
+        <%= image_tag res.item.user.avatars, class: "img-circle", size: "28x28" %>
+        <div class="listing-text-indent">Owner:</div>
+        <div class="listing-text-right"><%= res.item.user.first_name %> <%= res.item.user.last_name %></div>
+
+        <div id="rental-rate" class="top-20">
+          <div style="display: block; width: 100%">
+            <div class="listing-text-indent">Rental term:</div>
+            <div class="listing-text-right">$<%= res.rent_fee %> / <%= res.rent_term %></div>
+          </div>
+        </div>
+        <div class="top-10">
+          <div class="listing-text-indent">Rental Date:</div>
+          <div class="listing-text-right"><%= res.date_start.strftime("%B %d, %Y at %I:%M %P") %></div><br>
+          <div class="listing-text-indent">Return Date:</div>
+          <div class="listing-text-right"><%= res.date_end.strftime("%B %d, %Y at %I:%M %P") %></div>
+        </div>
+        <div class="top-10">
+          <div class="listing-text-indent">Location:</div>
+          <div class="listing-text-right font-14">
+              <%= res.item.address %>, <%= res.item.city %>, <%= res.item.province %>, <%= res.item.postal_code %>
+          </div>
+        </div>
+        <div class="top-30">
+          <i class="fa fa-envelope-o"></i> <%= res.item.user.email %> &nbsp;
+          <i class="fa fa-phone"></i> <%= res.item.user.phone %>
+        </div>
+
+        <div class="clearfix bottom-20"></div>
+          <!-- <br>Available | Rented by John on Dec 12, 2015 until Dec 15, 2015 | Returned -->
+        <!-- <p>State Machine: Unpublish | Available | Rented | Returned to draft| Lost</p> -->
+      </div>
+    </div>
+
+  <% end %>
+
+
+<% else %>
+  <div style="display: block;" class="text-center font-24 top-50 bottom-50">
+    You haven't rent anything yet
+  </div>
+<% end %>
+<!--  -->
+
+
+  </div>
+</div>

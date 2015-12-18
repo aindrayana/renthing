@@ -7,9 +7,10 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    render text:params
-    
-    # render text:current_user.id
+    # render text:params
+    @res = Reservation.where("user_id='#{current_user.id}'")
+    # @item = Item.joins(:reservations).where(reservations: {user_id:"#{current_user.id}"})
+    # render text:@item.count
   end
 
   def create

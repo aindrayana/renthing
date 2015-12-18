@@ -22,6 +22,23 @@
   /*border: 1px solid;*/
 }
 
+.listing-image {
+  top: 0px;
+  right: 10px;
+  padding: 7px 10px;
+  position: absolute;
+  color: #fff;
+}
+
+.listing-img-container img {
+  border-radius: 5px;
+}
+
+
+.listing-image img {
+  border: 1px solid #fff;
+}
+
 .listing-label {
   top: 200px;
   /*bottom: 150px;*/
@@ -35,6 +52,20 @@
 .listing-label:hover {
   color: #fff;
   text-decoration: none;
+}
+
+.listing-text-indent {
+  margin-right:10px;
+  display:block;
+  // border: 1px solid;
+  background-color: #eee;
+  width: 20%;
+  float: left;
+}
+
+.listing-text-right {
+  display:inline;
+  font-weight: bold;
 }
 
 /* search inside listing ---------------------------------------------------*/

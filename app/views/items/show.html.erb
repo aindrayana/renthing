@@ -11,28 +11,8 @@
           <%= image_tag("#{img.file_name}", width: "90", class: "left-20") %>
         <% end %>
     <!-- review section -->
-        <div class="title-review h3">15 Reviews</div>
+        <div class="title-review h3">1 Review</div>
           <ul class="list-group text-left museo">
-            <li class="list-group-item">
-              <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
-            <li class="list-group-item">
-              <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
-            <li class="list-group-item">
-              <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
-            <li class="list-group-item">
-              <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
             <li class="list-group-item">
               <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
               Julia <span class="sub-text">on March 5th, 2014</span>
@@ -123,11 +103,15 @@
                           class: "btn btn-primary" %>
                   <% end %>
                 </span>
-                <strong>Julia</strong> has made reservation for
-                  <strong><%= @item.reservations.first.rent_term.upcase %></strong> rate of
-                  <strong>$<%= @item.reservations.first.rent_fee %></strong> per day<br>
+
+                <span class="label label-primary">Reserved</span> by <strong><%= @item.reservations.last.user.first_name %> <%= @item.reservations.last.user.last_name %></strong><br>
+                with <strong><%= @item.reservations.first.rent_term.upcase %></strong> rate of
+                <strong>$<%= @item.reservations.first.rent_fee %></strong> per day<br>
                 from <strong><%= @item.reservations.first.date_start.strftime("%B %d, %Y at %I:%M %P") %></strong><br>
-                to <strong><%= @item.reservations.first.date_end.strftime("%B %d, %Y at %I:%M %P") %></strong>
+                to <strong><%= @item.reservations.first.date_end.strftime("%B %d, %Y at %I:%M %P") %></strong><br>
+                Contact <%= @item.reservations.last.user.first_name %>: &nbsp;
+                <i class="fa fa-envelope-o"></i> <%= @item.reservations.last.user.email %> &nbsp;
+                <i class="fa fa-phone"></i> <%= @item.reservations.last.user.phone %>
               </li>
             </ul>
           <% elsif @item.approved? %>
@@ -148,13 +132,14 @@
                         class: "btn btn-primary" %>
                 <%# end %>
               </span>
-                On <%= @item.updated_at.strftime("%B %d, %Y") %><br>
-                You have approved reservation by
-                <strong>Julia</strong><br>
+                <span class="label label-primary">Rented</span> to <strong><%= @item.reservations.last.user.first_name %> <%= @item.reservations.last.user.last_name %></strong><br>
                 with <strong><%= @item.reservations.first.rent_term.upcase %></strong> rate of
                 <strong>$<%= @item.reservations.first.rent_fee %></strong> per day<br>
-              from <strong><%= @item.reservations.first.date_start.strftime("%B %d, %Y at %I:%M %P") %></strong><br>
-              to <strong><%= @item.reservations.first.date_end.strftime("%B %d, %Y at %I:%M %P") %></strong>
+                from <strong><%= @item.reservations.first.date_start.strftime("%B %d, %Y at %I:%M %P") %></strong><br>
+                to <strong><%= @item.reservations.first.date_end.strftime("%B %d, %Y at %I:%M %P") %></strong><br>
+                Contact <%= @item.reservations.last.user.first_name %>: &nbsp;
+                <i class="fa fa-envelope-o"></i> <%= @item.reservations.last.user.email %> &nbsp;
+                <i class="fa fa-phone"></i> <%= @item.reservations.last.user.phone %>
             </li>
           </ul>
           <% end %>

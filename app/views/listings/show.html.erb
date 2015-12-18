@@ -22,28 +22,8 @@
           <%= image_tag("#{img.file_name}", width: "90", class: "left-20") %>
         <% end %>
     <!-- review section -->
-        <div class="title-review h3">15 Reviews</div>
+        <div class="title-review h3">1 Review</div>
           <ul class="list-group text-left museo">
-            <li class="list-group-item">
-              <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
-            <li class="list-group-item">
-              <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
-            <li class="list-group-item">
-              <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
-            <li class="list-group-item">
-              <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
-              Julia <span class="sub-text">on March 5th, 2014</span>
-              <p>Lorem ipsum dolor sit amet, nullam aeterno ex eos, has putant scripta sapientem ne, mundi patrioque omittantur an duo.</p>
-            </li>
             <li class="list-group-item">
               <%= image_tag "https://placeimg.com/30/30/people", class: "img-circle" %>
               Julia <span class="sub-text">on March 5th, 2014</span>
@@ -168,7 +148,7 @@
             <% if !@item.reserved? %>
               <%= f.submit "Make Reservation", class: "btn btn-primary" %>
             <% else %>
-              This is has been reserved by user
+              This item has been reserved by user
             <% end %>
           <% else %>
             Please Log in to make a reservation

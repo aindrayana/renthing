@@ -4,7 +4,9 @@ class ListingsController < ApplicationController
   def index
     search_params = params.permit([:search])
     @search = search_params[:search]
-    @items = Item.where(["title ilike ? OR description ilike ?", "%#{@search}%", "%#{@search}%"]).order("created_at DESC")
+    @items = Item.where(["title ilike ? OR description ilike ?",
+        "%#{@search}%",
+        "%#{@search}%"]).where("aasm_state='available'").order("created_at DESC")
   end
 
   def show

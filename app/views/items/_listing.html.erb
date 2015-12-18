@@ -12,7 +12,28 @@
         <div class="listing-img-container media-cover">
           <%= link_to image_tag("#{item.images.first.file_name if item.images.first}", width: "250"),
                 item_path(item)  %>
-          <p class="text-center"><%= link_to "edit", edit_item_path(item) %> | <a href="#">unpublish</a></p>
+          <div class="listing-status">
+            <% if (item.aasm_state=="available") %>
+              <p class="text-center"><%= link_to "edit", edit_item_path(item) %> | <a href="#">unpublish</a></p>
+              <span class="label label-primary"><%= item.aasm_state.capitalize %></span>
+            <% elsif (item.aasm_state=="reserved") %>
+              <p class="top-20">
+                <span class="label label-primary">Pending Approval by Owner</span><br><br>
+                <span class="font-14">Reserved by <%= item.reservations.last.user.first_name %><br>
+                  on <%= item.reservations.last.created_at.strftime("%B %d, %Y at %I:%M %P") %>
+                </span>
+              </p>
+            <% elsif (item.aasm_state=="approved") %>
+              <p class="top-20">
+                <span class="label label-primary">This item is being rented</span><br><br>
+                <span class="font-14">by <%= item.reservations.last.user.first_name %>
+                  <%= item.reservations.last.user.last_name %><br>
+                  on <%= item.reservations.last.date_start.strftime("%B %d, %Y at %I:%M %P") %><br>
+                  until <%= item.reservations.last.date_end.strftime("%B %d, %Y at %I:%M %P") %>
+                </span>
+              </p>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -54,7 +75,7 @@
         <% end %>
       </div>
       <div class="clearfix bottom-20"></div>
-      <p>Status: <%= item.aasm_state.capitalize %></p>
+
         <!-- <br>Available | Rented by John on Dec 12, 2015 until Dec 15, 2015 | Returned -->
       <!-- <p>State Machine: Unpublish | Available | Rented | Returned to draft| Lost</p> -->
     </div>
