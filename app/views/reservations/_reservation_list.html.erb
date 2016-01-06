@@ -14,9 +14,9 @@
             <%= link_to image_tag("#{res.item.images.first.file_name if res.item.images.first}", width: "280"),
                   listing_path(res.item)  %>
                   <p><span class="label label-primary"><%= res.item.aasm_state.capitalize %></span>
-                    <% if (res.item.aasm_state='reserved') %>
+                    <% if (res.item.aasm_state=="reserved") %>
                       <span class="label label-primary">Pending Approval by Owner</span>
-                    <% elsif (res.item.aasm_state='approved') %>
+                    <% elsif (res.item.aasm_state=="approved") %>
                       <span class="label label-primary">You rent this item</span>
                     <% end %>
                   </p>

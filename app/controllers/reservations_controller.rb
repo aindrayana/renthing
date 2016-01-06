@@ -29,7 +29,8 @@ class ReservationsController < ApplicationController
 
         # ReservationMailer.notify_item_owner(@reservation).deliver_later
 
-        format.html { redirect_to listing_path(@item), notice: "Item successfully reserved" }
+        # format.html { redirect_to listing_path(@item), notice: "Item successfully reserved" }
+        format.html { redirect_to reservations_path, notice: "Item successfully reserved" }
         format.js { render :create_success }
       else
         flash[:alert] = @reservation.errors.full_messages.join(", ")
